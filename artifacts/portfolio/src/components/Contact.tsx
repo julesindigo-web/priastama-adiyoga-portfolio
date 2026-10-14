@@ -221,11 +221,11 @@ export function Contact() {
               Diskusikan Kebutuhan K3L
             </a>
 
-            {/* PDF 1 halaman */}
+            {/* PDF profil pemilik */}
             <a
               href="/priastama-adiyoga-hse-profil.pdf"
               download="Priastama-Adiyoga-HSE-Profil.pdf"
-              aria-label="Unduh profil HSE satu halaman (PDF)"
+              aria-label="Unduh profil HSE (PDF)"
               className="mt-3 flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-[1.02]"
               style={{
                 border: '1px solid rgba(200,168,74,0.48)',
@@ -235,7 +235,7 @@ export function Contact() {
               }}
             >
               <Download size={15} />
-              Unduh Profil 1 Halaman (PDF)
+              Unduh Profil (PDF)
             </a>
 
             {/* Footer */}
