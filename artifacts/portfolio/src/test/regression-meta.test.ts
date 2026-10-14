@@ -21,7 +21,7 @@ describe('document metadata (regression)', () => {
     expect(html).not.toMatch(/9\+/);
     expect(html).toMatch(/og:locale" content="id_ID"/);
     expect(html).toMatch(/og:image:width/);
-    expect(html).toMatch(/Priastama Adiyoga — HSE Manager/);
+    expect(html).toMatch(/Priastama Adiyoga — Specialist OHS Expert/);
   });
 
   it('loads exactly the used font weights with display=swap', () => {
@@ -41,6 +41,7 @@ describe('document metadata (regression)', () => {
     const html = read('index.html');
     expect(html).toMatch(/"@type": "Person"/);
     expect(html).toMatch(/"name": "Priastama Adiyoga"/);
+    expect(html).toMatch(/"jobTitle": "Specialist OHS Expert"/);
     expect(html).toMatch(/8\+ tahun HSE & K3L/);
   });
 

@@ -52,7 +52,7 @@ export function About() {
           viewport={{ once: true }}
           className="mb-24 text-center"
         >
-          <span className="text-xs tracking-[0.3em] uppercase font-semibold mb-4 block" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase font-semibold mb-4 block break-words" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
             — Profil HSE —
           </span>
           <h2 className="font-heading font-bold tracking-tight" style={{ fontSize: 'clamp(2.2rem,5vw,4rem)', lineHeight: 1.2, color: '#eef2ff' }}>
@@ -94,7 +94,7 @@ export function About() {
                 src="/photos/profile.jpg"
                 srcSet="/photos/profile.jpg 600w"
                 sizes="(max-width: 1024px) 100vw, 400px"
-                alt="Priastama Adiyoga — Mining HSE Manager di site Kalimantan Timur"
+                alt="Priastama Adiyoga — Specialist OHS Expert di site Kalimantan Timur"
                 loading="lazy"
                 decoding="async"
                 width={600}
@@ -121,7 +121,7 @@ export function About() {
                 >
                   <div className="font-heading font-bold text-sm" style={{ color: '#eef2ff' }}>Priastama Adiyoga</div>
                   <div className="text-xs mt-0.5" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
-                    HSE Manager · SMKP Auditor · K3L
+                    Specialist OHS Expert · K3L
                   </div>
                 </div>
               </div>
@@ -294,7 +294,7 @@ export function About() {
                     <div className="font-heading font-bold text-2xl mb-1" style={{ color: s.color, lineHeight: 1.15 }}>
                       {s.value}
                     </div>
-                    <div className="text-xs tracking-wider uppercase" style={{ color: 'rgba(210,225,255,0.70)', fontFamily: 'Inter, sans-serif' }}>
+                    <div className="text-xs tracking-wider uppercase break-words" style={{ color: 'rgba(210,225,255,0.70)', fontFamily: 'Inter, sans-serif', overflowWrap: 'break-word', lineHeight: 1.5 }}>
                       {s.label}
                     </div>
                   </div>

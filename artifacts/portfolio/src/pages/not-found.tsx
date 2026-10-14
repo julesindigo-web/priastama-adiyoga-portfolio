@@ -2,11 +2,11 @@ export default function NotFound() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-background px-6">
       <div
-        className="text-center p-10 rounded-2xl max-w-md w-full"
+        className="text-center p-6 sm:p-10 rounded-2xl max-w-md w-full"
         style={{ background: 'rgba(238,242,255,0.022)', border: '1px solid rgba(200,168,74,0.2)' }}
       >
         <div
-          className="text-xs tracking-[0.3em] uppercase font-semibold mb-4 block"
+          className="text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase font-semibold mb-4 block break-words"
           style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}
         >
           — Halaman Tidak Ditemukan —
@@ -20,7 +20,7 @@ export default function NotFound() {
         </p>
         <a
           href="/"
-          className="inline-flex items-center justify-center gap-2 rounded-lg font-bold uppercase text-sm transition-all duration-300 hover:scale-[1.02]"
+          className="inline-flex items-center justify-center gap-2 rounded-lg font-bold uppercase text-sm transition-all duration-300 hover:scale-[1.02] max-w-full text-center flex-wrap break-words"
           style={{
             padding: '13px 32px',
             fontSize: 11,
@@ -34,12 +34,12 @@ export default function NotFound() {
         >
           Kembali ke Beranda
         </a>
-        <div className="mt-4 flex items-center justify-center gap-5 text-xs font-semibold tracking-widest uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
-          <a href="/#experience" className="transition-colors hover:opacity-100" style={{ color: 'rgba(216,228,252,0.70)' }}>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs font-semibold tracking-widest uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <a href="/#experience" className="inline-flex items-center px-2 py-3 transition-colors hover:opacity-100" style={{ color: 'rgba(216,228,252,0.70)', minHeight: 44 }}>
             Lihat Pengalaman
           </a>
           <span aria-hidden="true" style={{ color: 'rgba(200,168,74,0.40)' }}>·</span>
-          <a href="/#contact" className="transition-colors hover:opacity-100" style={{ color: 'rgba(216,228,252,0.70)' }}>
+          <a href="/#contact" className="inline-flex items-center px-2 py-3 transition-colors hover:opacity-100" style={{ color: 'rgba(216,228,252,0.70)', minHeight: 44 }}>
             Hubungi K3L
           </a>
         </div>

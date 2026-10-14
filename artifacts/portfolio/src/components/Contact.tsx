@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin, MapPin, Phone, MessageCircle, ExternalLink, ArrowUpRight, Download } from 'lucide-react';
 
 const opportunities = [
-  { label: 'HSE Manager & Leadership K3L',  color: '#c8a84a' },
+  { label: 'Specialist OHS Expert & Leadership K3L',  color: '#c8a84a' },
   { label: 'SMKP Audit & Sistem K3L',       color: '#2a7fff' },
   { label: 'Konsultan Keselamatan Tambang', color: '#c8a84a' },
   { label: 'CSMS & Pembinaan Kontraktor',   color: '#2a7fff' },
@@ -72,7 +72,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="mb-24 text-center"
         >
-          <span className="text-xs tracking-[0.3em] uppercase font-semibold mb-4 block" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase font-semibold mb-4 block break-words" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
             — Hubungi untuk K3L —
           </span>
           <h2 className="font-heading font-bold tracking-tight" style={{ fontSize: 'clamp(2.5rem,6vw,5rem)', lineHeight: 1.2, color: '#eef2ff' }}>
@@ -137,7 +137,7 @@ export function Contact() {
                     >
                       <c.Icon size={18} style={{ color: c.color }} aria-hidden="true" />
                     </div>
-                    <span className="font-medium text-sm" style={{ color: 'rgba(238,242,255,0.86)', fontFamily: 'Inter, sans-serif' }}>
+                    <span className="font-medium text-sm min-w-0 flex-1 break-words" style={{ color: 'rgba(238,242,255,0.86)', fontFamily: 'Inter, sans-serif', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                       {c.label}
                     </span>
                     {c.external && (

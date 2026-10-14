@@ -77,7 +77,7 @@ export function Achievements({ items = achievements }: { items?: Achievement[] }
           viewport={{ once: true }}
           className="mb-24 text-center"
         >
-          <span className="text-xs tracking-[0.3em] uppercase font-semibold mb-4 block" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase font-semibold mb-4 block break-words" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
             — Rekognisi & Dampak K3L —
           </span>
           <h2 className="font-heading font-bold tracking-tight" style={{ fontSize: 'clamp(2rem,5vw,3.5rem)', color: '#eef2ff' }}>
@@ -137,7 +137,7 @@ export function Achievements({ items = achievements }: { items?: Achievement[] }
               />
 
               {/* Content */}
-              <div className="relative z-10 p-8">
+              <div className="relative z-10 p-6 sm:p-8">
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
                   style={{ background: `${item.color}18`, border: `1px solid ${item.color}32` }}

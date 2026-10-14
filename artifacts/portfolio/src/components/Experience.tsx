@@ -99,7 +99,7 @@ export function Experience() {
           viewport={{ once: true }}
           className="mb-24 text-center"
         >
-          <span className="text-xs tracking-[0.3em] uppercase font-semibold mb-4 block" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase font-semibold mb-4 block break-words" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
             — Linimasa Karier K3L —
           </span>
           <h2 className="font-heading font-bold tracking-tight" style={{ fontSize: 'clamp(2rem,5vw,3.5rem)', color: '#eef2ff' }}>
@@ -167,7 +167,7 @@ export function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, delay: i * 0.08 }}
-                className="relative pl-20 md:pl-24 group"
+                className="relative pl-14 sm:pl-20 md:pl-24 group"
               >
                 {/* Dot */}
                 <div
@@ -179,7 +179,7 @@ export function Experience() {
 
                 {/* Card */}
                 <div
-                  className="relative rounded-2xl p-7 overflow-hidden transition-all duration-500 group-hover:-translate-y-0.5"
+                  className="relative rounded-2xl p-5 sm:p-7 overflow-hidden transition-all duration-500 group-hover:-translate-y-0.5"
                   style={{
                     background: 'rgba(238,242,255,0.022)',
                     border: '1px solid rgba(238,242,255,0.07)',
@@ -217,12 +217,14 @@ export function Experience() {
                         <h4 className="font-medium text-base" style={{ color: '#7ab8ff', fontFamily: 'Inter, sans-serif' }}>{exp.role}</h4>
                       </div>
                       <div
-                        className="text-xs font-mono font-semibold tracking-wider shrink-0 px-3 py-1.5 rounded-lg"
+                        className="text-xs font-mono font-semibold tracking-wider shrink-0 px-3 py-1.5 rounded-lg max-w-full self-start md:self-auto"
                         style={{
                           background: 'rgba(200,168,74,0.08)',
                           color: '#c8a84a',
                           border: '1px solid rgba(200,168,74,0.2)',
-                          whiteSpace: 'nowrap',
+                          whiteSpace: 'normal',
+                          overflowWrap: 'break-word',
+                          wordBreak: 'break-word',
                         }}
                       >
                         {exp.period}

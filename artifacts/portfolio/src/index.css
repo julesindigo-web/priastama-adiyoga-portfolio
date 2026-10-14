@@ -201,6 +201,15 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Mobile safety net: decorative absolute layers are clipped per-section,
+     but this guarantees no missed layer can ever cause page-level
+     horizontal scrolling on 320px viewports. `clip` (not `hidden`)
+     preserves sticky/overflow semantics elsewhere. */
+  html, body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }

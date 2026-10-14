@@ -88,6 +88,18 @@ export function Nav() {
     return () => window.removeEventListener('keydown', onTab);
   }, [mobileOpen]);
 
+  // Lock body scroll while the mobile drawer is open so the page behind
+  // cannot scroll (no body-scroll leak). Restores the previous value on
+  // close/unmount.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileOpen]);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMobileOpen(false);
@@ -109,11 +121,13 @@ export function Nav() {
         }}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          {/* Brand — real gold PA lockup artwork, screen-blended so it fuses with the bar */}
+          {/* Brand — real gold PA lockup artwork, screen-blended so it fuses with the bar.
+              minWidth/minHeight keep a ~44px touch target on 320px screens. */}
           <button
             onClick={() => scrollTo('hero')}
             aria-label="Kembali ke beranda portfolio HSE Priastama Adiyoga"
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center justify-center hover:opacity-80 transition-opacity"
+            style={{ minWidth: 44, minHeight: 44 }}
           >
             <img
               src="/brand-pa-nav.png"
@@ -166,14 +180,14 @@ export function Nav() {
             </button>
           </div>
 
-          {/* Mobile burger */}
+          {/* Mobile burger — 44px minimum touch target (p-2 + 20px icon alone is ~36px) */}
           <button
             ref={burgerRef}
-            className="md:hidden p-2 rounded-lg transition-colors"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg transition-colors"
             aria-label={mobileOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-hse-menu"
-            style={{ background: 'rgba(200,168,74,0.07)', border: '1px solid rgba(200,168,74,0.15)' }}
+            style={{ minWidth: 44, minHeight: 44, background: 'rgba(200,168,74,0.07)', border: '1px solid rgba(200,168,74,0.15)' }}
             onClick={() => setMobileOpen(v => !v)}
           >
             {mobileOpen
@@ -196,8 +210,9 @@ export function Nav() {
             role="dialog"
             aria-modal="true"
             aria-label="Menu navigasi HSE"
-            className="fixed top-0 right-0 bottom-0 z-40 w-72 flex flex-col pt-24 px-8 gap-2"
+            className="fixed top-0 right-0 bottom-0 z-40 w-72 max-w-[85vw] flex flex-col pt-24 px-8 pb-8 gap-2 overflow-y-auto"
             style={{
+              maxWidth: '85vw',
               background:    'rgba(2,10,24,0.97)',
               backdropFilter: 'blur(24px)',
               borderLeft:    '1px solid rgba(200,168,74,0.1)',

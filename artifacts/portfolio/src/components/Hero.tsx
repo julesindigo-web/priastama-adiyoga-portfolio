@@ -267,8 +267,8 @@ export function Hero() {
   ];
 
   const roles: { label: string; color: string; weight: number }[] = [
-    { label: 'Mining HSE Manager',          color: '#c8a84a',                weight: 500 },
-    { label: 'SMKP Auditor · OHS Specialist', color: 'rgba(210,225,255,0.66)', weight: 400 },
+    { label: 'Specialist OHS Expert',          color: '#c8a84a',                weight: 500 },
+    { label: 'SMKP Systems · OHS Compliance', color: 'rgba(210,225,255,0.66)', weight: 400 },
     { label: 'K3L Systems Leader',          color: '#7ab8ff',                weight: 400 },
   ];
 
@@ -339,6 +339,10 @@ export function Hero() {
             padding: '7px 16px',
             marginBottom: 18,
             maxWidth: '92vw',
+            flexWrap: 'wrap',
+            rowGap: 6,
+            textAlign: 'center',
+            lineHeight: 1.6,
             border: '1px solid rgba(200,168,74,0.32)',
             background: 'rgba(200,168,74,0.07)',
             color: '#e8c870',

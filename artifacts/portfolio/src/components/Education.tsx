@@ -56,7 +56,7 @@ export function Education() {
           viewport={{ once: true }}
           className="mb-24 text-center"
         >
-          <span className="text-xs tracking-[0.3em] uppercase font-semibold mb-4 block" style={{ color: '#7ab8ff', fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase font-semibold mb-4 block break-words" style={{ color: '#7ab8ff', fontFamily: 'Inter, sans-serif' }}>
             — Akademik & Kredensial K3L —
           </span>
           <h2 className="font-heading font-bold tracking-tight" style={{ fontSize: 'clamp(2rem,5vw,3.5rem)', color: '#eef2ff' }}>
@@ -82,7 +82,7 @@ export function Education() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.12 }}
-                className="group relative rounded-2xl p-7 overflow-hidden"
+                className="group relative rounded-2xl p-5 sm:p-7 overflow-hidden"
                 style={{
                   background: 'rgba(238,242,255,0.025)',
                   border: `1px solid ${d.color}25`,
@@ -116,7 +116,7 @@ export function Education() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="rounded-2xl p-7 text-center relative overflow-hidden"
+              className="rounded-2xl p-5 sm:p-7 text-center relative overflow-hidden"
               style={{
                 background: 'linear-gradient(135deg, rgba(200,168,74,0.1), rgba(42,127,255,0.05))',
                 border: '1px solid rgba(200,168,74,0.2)',

@@ -62,7 +62,7 @@ export function Skills() {
           viewport={{ once: true }}
           className="mb-24 text-center"
         >
-          <span className="text-xs tracking-[0.3em] uppercase font-semibold mb-4 block" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase font-semibold mb-4 block break-words" style={{ color: '#c8a84a', fontFamily: 'Inter, sans-serif' }}>
             — Kompetensi Inti K3L —
           </span>
           <h2 className="font-heading font-bold tracking-tight" style={{ fontSize: 'clamp(2rem,5vw,3.5rem)', color: '#eef2ff' }}>
@@ -83,7 +83,7 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="group relative rounded-2xl p-8 overflow-hidden"
+              className="group relative rounded-2xl p-5 sm:p-8 overflow-hidden"
               style={{ background: cat.gradient, border: `1px solid ${cat.border}`, backdropFilter: 'blur(16px)' }}
             >
               <div
@@ -98,10 +98,10 @@ export function Skills() {
                 >
                   <cat.Icon size={22} style={{ color: cat.color }} aria-hidden="true" />
                 </div>
-                <h3 className="font-heading font-bold text-xl" style={{ color: cat.color }}>
+                <h3 className="font-heading font-bold text-xl min-w-0 break-words" style={{ color: cat.color }}>
                   {cat.title}
                 </h3>
-                <div className="ml-auto text-xs" style={{ color: `${cat.color}70`, fontFamily: 'Inter, sans-serif' }}>
+                <div className="ml-auto text-xs shrink-0" style={{ color: `${cat.color}70`, fontFamily: 'Inter, sans-serif' }}>
                   {cat.skills.length} kompetensi
                 </div>
               </div>
