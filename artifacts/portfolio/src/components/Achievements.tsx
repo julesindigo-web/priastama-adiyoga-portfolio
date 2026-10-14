@@ -1,7 +1,18 @@
 import { motion } from 'framer-motion';
-import { Trophy, ShieldCheck, Building2, HeartHandshake } from 'lucide-react';
+import { Trophy, ShieldCheck, Building2, HeartHandshake, type LucideIcon } from 'lucide-react';
 
-const achievements = [
+export type Achievement = {
+  Icon: LucideIcon;
+  title: string;
+  subtitle: string;
+  color: string;
+  gradient: string;
+  border: string;
+  photo: string | null;
+  description: string;
+};
+
+const achievements: Achievement[] = [
   {
     Icon: Trophy,
     title: 'Ketua Panitia Terbaik',
@@ -16,13 +27,13 @@ const achievements = [
   {
     Icon: ShieldCheck,
     title: 'Zero Accident Record',
-    subtitle: '9+ Tahun · Tanpa LTI',
+    subtitle: 'Aragon 2023–2024 · Tanpa LTI',
     color: '#2a7fff',
     gradient: 'linear-gradient(135deg, rgba(42,127,255,0.12) 0%, rgba(42,127,255,0.03) 100%)',
     border: 'rgba(42,127,255,0.25)',
     photo: '/photos/mining-panorama.jpg',
     description:
-      'Mempertahankan operasi tanpa insiden di seluruh site tambang aktif sepanjang karier di lingkungan high-risk — HIRADC disiplin, audit SMKP rutin, dan BBS yang hidup.',
+      'Zero Lost-Time Injury selama 10 bulan 10 hari penugasan (1 Sep 2023 – 10 Jul 2024) di PT. Aragon Tambang Pratama — HIRADC disiplin, audit SMKP rutin, dan BBS yang hidup di lingkungan high-risk.',
   },
   {
     Icon: Building2,
@@ -42,13 +53,15 @@ const achievements = [
     color: '#c8a84a',
     gradient: 'linear-gradient(135deg, rgba(200,168,74,0.1) 0%, rgba(200,168,74,0.02) 100%)',
     border: 'rgba(200,168,74,0.22)',
-    photo: null,
+    photo: '/photos/emergency-drill.jpg',
     description:
       'Memadukan manajemen risiko tambang, kerangka hukum ketenagakerjaan, dan eksekusi lapangan — dari SOP dan CSMS kontraktor hingga emergency drill yang terdokumentasi.',
   },
 ];
 
-export function Achievements() {
+// Optional `items` override exists only so tests can exercise the
+// photo:null gradient fallback now that every shipped card has a photo.
+export function Achievements({ items = achievements }: { items?: Achievement[] }) {
   return (
     <section id="achievements" className="py-36 relative overflow-hidden" style={{ background: '#020a18' }}>
       <div
@@ -74,7 +87,7 @@ export function Achievements() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {achievements.map((item, i) => (
+          {items.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30, scale: 0.97 }}
@@ -89,6 +102,8 @@ export function Achievements() {
                 <div className="absolute inset-0">
                   <img
                     src={item.photo}
+                    srcSet={`${item.photo} 640w`}
+                    sizes="(max-width: 768px) 100vw, 500px"
                     alt={`${item.title} — dokumentasi kegiatan K3L`}
                     loading="lazy"
                     decoding="async"
@@ -137,7 +152,7 @@ export function Achievements() {
                 >
                   {item.subtitle}
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: 'rgba(216,228,252,0.72)', fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-sm leading-relaxed" style={{ color: 'rgba(216,228,252,0.82)', fontFamily: 'Inter, sans-serif' }}>
                   {item.description}
                 </p>
               </div>

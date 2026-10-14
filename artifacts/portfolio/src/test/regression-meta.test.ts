@@ -14,11 +14,11 @@ function readRepo(rel: string): string {
 }
 
 describe('document metadata (regression)', () => {
-  it('keeps SEO/OG/Twitter copy on the 9+ narrative with valid locale and images', () => {
+  it('keeps SEO/OG/Twitter copy on the 8+ narrative with valid locale and images', () => {
     const html = read('index.html');
     expect(html).toMatch(/<html lang="id">/);
-    expect(html).toMatch(/9\+ tahun/);
-    expect(html).not.toMatch(/8\+/);
+    expect(html).toMatch(/8\+ tahun/);
+    expect(html).not.toMatch(/9\+/);
     expect(html).toMatch(/og:locale" content="id_ID"/);
     expect(html).toMatch(/og:image:width/);
     expect(html).toMatch(/Priastama Adiyoga — HSE Manager/);
@@ -26,7 +26,7 @@ describe('document metadata (regression)', () => {
 
   it('loads exactly the used font weights with display=swap', () => {
     const html = read('index.html');
-    expect(html).toMatch(/family=Cormorant\+Garamond:ital,wght@0,600;1,600/);
+    expect(html).toMatch(/family=Cormorant\+Garamond:ital,wght@0,600;0,700;1,600;1,700/);
     expect(html).toMatch(/display=swap/);
     expect(html).toMatch(/family=Syne:wght@500;600;700;800/);
   });
@@ -41,7 +41,7 @@ describe('document metadata (regression)', () => {
     const html = read('index.html');
     expect(html).toMatch(/"@type": "Person"/);
     expect(html).toMatch(/"name": "Priastama Adiyoga"/);
-    expect(html).toMatch(/9\+ tahun HSE & K3L/);
+    expect(html).toMatch(/8\+ tahun HSE & K3L/);
   });
 
   it('keeps the PWA manifest on-brand with valid icon wiring', () => {
@@ -50,7 +50,7 @@ describe('document metadata (regression)', () => {
       description: string;
       icons: Array<{ src: string }>;
     };
-    expect(manifest.description).toMatch(/9\+ tahun/);
+    expect(manifest.description).toMatch(/8\+ tahun/);
     expect(manifest.name).toMatch(/Priastama Adiyoga/);
     for (const icon of manifest.icons) {
       expect(

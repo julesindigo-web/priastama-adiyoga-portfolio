@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -15,6 +15,9 @@ export function Nav() {
   const [scrolled, setScrolled]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive]         = useState('');
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const wasOpenRef = useRef(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -41,6 +44,49 @@ export function Nav() {
     });
     return () => observer.disconnect();
   }, []);
+
+  // Focus trap + restore for the mobile drawer (P0 a11y).
+  // Keeps Tab cycling inside the dialog while open and returns focus
+  // to the burger when closed. Escape handling stays in the effect above.
+  useEffect(() => {
+    if (!mobileOpen) {
+      // Restore focus only after an actual close, never on initial mount.
+      if (wasOpenRef.current) burgerRef.current?.focus?.();
+      wasOpenRef.current = false;
+      return;
+    }
+    wasOpenRef.current = true;
+    // Safe non-null: this branch runs only with the drawer mounted, after
+    // commit, so the ref is always set (same pattern as main.tsx root).
+    const drawerEl = drawerRef.current!;
+    const focusables = drawerEl.querySelectorAll<HTMLElement>(
+      'button, [href], [tabindex]:not([tabindex="-1"])',
+    );
+    focusables[0]?.focus?.();
+    const onTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      // The drawer renders only visible buttons, so no layout-based
+      // visibility filter is needed here.
+      const els = Array.from(
+        drawerEl.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+      // No empty guard: with zero items the comparisons below are simply
+      // false and the handler is a no-op, so no branch is needed.
+      const first = els[0];
+      const last = els[els.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    window.addEventListener('keydown', onTab);
+    return () => window.removeEventListener('keydown', onTab);
+  }, [mobileOpen]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -71,8 +117,7 @@ export function Nav() {
           >
             <img
               src="/brand-pa-nav.png"
-              alt=""
-              aria-hidden="true"
+              alt="Priastama Adiyoga — Beranda portfolio HSE"
               width={62}
               height={38}
               decoding="async"
@@ -87,14 +132,14 @@ export function Nav() {
                 key={item.name}
                 onClick={() => scrollTo(item.id)}
                 className="relative px-4 py-2 text-sm font-medium tracking-wide transition-all duration-200 rounded-lg"
-                style={{ color: active === item.id ? '#c8a84a' : 'rgba(210,225,255,0.5)' }}
+                style={{ color: active === item.id ? '#c8a84a' : 'rgba(210,225,255,0.75)' }}
                 onMouseEnter={e => {
                   if (active !== item.id)
                     (e.currentTarget as HTMLElement).style.color = 'rgba(238,242,255,0.9)';
                 }}
                 onMouseLeave={e => {
                   if (active !== item.id)
-                    (e.currentTarget as HTMLElement).style.color = 'rgba(210,225,255,0.5)';
+                    (e.currentTarget as HTMLElement).style.color = 'rgba(210,225,255,0.75)';
                 }}
               >
                 {item.name}
@@ -123,6 +168,7 @@ export function Nav() {
 
           {/* Mobile burger */}
           <button
+            ref={burgerRef}
             className="md:hidden p-2 rounded-lg transition-colors"
             aria-label={mobileOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
             aria-expanded={mobileOpen}
@@ -141,6 +187,7 @@ export function Nav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            ref={drawerRef}
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}

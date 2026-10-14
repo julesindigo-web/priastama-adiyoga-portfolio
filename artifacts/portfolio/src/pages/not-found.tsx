@@ -15,7 +15,7 @@ export default function NotFound() {
           404
         </h1>
         <div className="mt-4 mx-auto" style={{ width: 80, height: 2, background: 'linear-gradient(90deg,#c8a84a,#2a7fff)' }} />
-        <p className="text-sm mt-6 mb-8 font-light" style={{ color: 'rgba(216,228,252,0.66)', fontFamily: 'Inter, sans-serif', lineHeight: 1.68 }}>
+        <p className="text-sm mt-6 mb-8 font-light" style={{ color: 'rgba(216,228,252,0.78)', fontFamily: 'Inter, sans-serif', lineHeight: 1.68 }}>
           Rute yang Anda tuju tidak tersedia. Kembali ke beranda untuk melanjutkan eksplorasi portfolio HSE &amp; K3L.
         </p>
         <a
@@ -34,6 +34,15 @@ export default function NotFound() {
         >
           Kembali ke Beranda
         </a>
+        <div className="mt-4 flex items-center justify-center gap-5 text-xs font-semibold tracking-widest uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <a href="/#experience" className="transition-colors hover:opacity-100" style={{ color: 'rgba(216,228,252,0.70)' }}>
+            Lihat Pengalaman
+          </a>
+          <span aria-hidden="true" style={{ color: 'rgba(200,168,74,0.40)' }}>·</span>
+          <a href="/#contact" className="transition-colors hover:opacity-100" style={{ color: 'rgba(216,228,252,0.70)' }}>
+            Hubungi K3L
+          </a>
+        </div>
       </div>
     </div>
   );

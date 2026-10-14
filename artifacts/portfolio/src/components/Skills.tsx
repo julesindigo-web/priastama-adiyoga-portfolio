@@ -21,7 +21,7 @@ const categories = [
     border: 'rgba(42,127,255,0.18)',
     skills: [
       'SMKP Pertambangan', 'Kepatuhan Regulasi ESDM', 'Legal Drafting K3L', 'CSMS',
-      'Dokumentasi & SOP K3L', 'Audit Internal SMKP', 'Advokat PERADI',
+      'Dokumentasi & SOP K3L', 'Audit Internal SMKP', 'Latar Hukum K3L (PERADI)',
     ],
   },
   {
@@ -68,7 +68,7 @@ export function Skills() {
           <h2 className="font-heading font-bold tracking-tight" style={{ fontSize: 'clamp(2rem,5vw,3.5rem)', color: '#eef2ff' }}>
             Matriks Kompetensi HSE
           </h2>
-          <p className="mt-4 text-sm max-w-xl mx-auto" style={{ color: 'rgba(216,228,252,0.62)', fontFamily: 'Inter, sans-serif' }}>
+          <p className="mt-4 text-sm max-w-xl mx-auto" style={{ color: 'rgba(216,228,252,0.75)', fontFamily: 'Inter, sans-serif' }}>
             Fokus penuh pada safety, K3L, SMKP, dan budaya Zero Accident di operasi pertambangan.
           </p>
           <div className="mt-4 mx-auto" style={{ width: 80, height: 2, background: 'linear-gradient(90deg,#c8a84a,#2a7fff)' }} />

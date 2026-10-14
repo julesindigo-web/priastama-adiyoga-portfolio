@@ -2,16 +2,18 @@ import { motion } from 'framer-motion';
 import { GraduationCap, Scale, BadgeCheck } from 'lucide-react';
 
 const certs = [
-  { name: 'Ahli K3 Pertambangan', org: 'BNSP', date: '2023–2026', featured: true },
-  { name: 'ISMKP — Sistem Manajemen Keselamatan Pertambangan', org: 'Geominerba', date: '2023', featured: false },
-  { name: 'Pengawas Operasional Madya (POM)', org: 'BNSP', date: '2024', featured: false },
-  { name: 'Safety & Environment Training', org: 'Exagama', date: '2024', featured: false },
-  { name: 'HIRADC & Risk Assessment', org: 'Pelatihan K3L', date: 'Profesional', featured: false },
-  { name: 'Incident Investigation', org: 'Pelatihan K3L', date: 'Profesional', featured: false },
-  { name: 'Emergency Response Plan', org: 'Pelatihan K3L', date: 'Profesional', featured: false },
-  { name: 'Contractor Safety Management (CSMS)', org: 'Pelatihan K3L', date: 'Profesional', featured: false },
-  { name: 'Behavior Based Safety', org: 'Pelatihan K3L', date: 'Profesional', featured: false },
-  { name: 'Sistem Manajemen Lingkungan', org: 'Pelatihan K3L', date: 'Profesional', featured: false },
+  { name: 'Ahli K3 Pertambangan', org: 'BNSP', date: '', featured: true },
+  { name: 'ISMKP — Sistem Manajemen Keselamatan Pertambangan', org: 'PPSDM Geominerba (ESDM)', date: 'Jan 2023', featured: false },
+  { name: 'Pengawas Operasional Madya (POM)', org: 'BNSP', date: 'Jul 2024 – Jul 2029', featured: false },
+  { name: 'Safety & Environment Training', org: 'Exagama Merapi Sertifikasi', date: 'Okt 2023', featured: false },
+  { name: 'HIRADC & Risk Assessment', org: 'Exagama Merapi Sertifikasi', date: 'Okt 2023', featured: false },
+  { name: 'Incident Investigation', org: 'Exagama Merapi Sertifikasi', date: 'Okt 2023', featured: false },
+  { name: 'Emergency Response Plan', org: 'Exagama Merapi Sertifikasi', date: 'Okt 2023', featured: false },
+  { name: 'Contractor Safety Management (CSMS)', org: 'Exagama Merapi Sertifikasi', date: 'Okt 2023', featured: false },
+  { name: 'Behavior Based Safety', org: 'Exagama Merapi Sertifikasi', date: 'Okt 2023', featured: false },
+  { name: 'Sistem Manajemen Lingkungan', org: 'Exagama Merapi Sertifikasi', date: 'Okt 2023', featured: false },
+  { name: 'CAIA – Certified Auditor Internal Awareness', org: 'ESAS Management', date: 'Nov 2025', featured: false },
+  { name: 'APKPI Safety Sharing Session Batch 160', org: 'APKPI', date: 'Sep 2026', featured: false },
 ];
 
 const degrees = [
@@ -25,8 +27,8 @@ const degrees = [
   },
   {
     year: '2017',
-    title: 'Advokat PERADI',
-    subtitle: 'Kompetensi Profesi Advokat',
+    title: 'Lulus Ujian Profesi Advokat',
+    subtitle: 'PERADI · 2017',
     institution: 'Perhimpunan Advokat Indonesia',
     color: '#7ab8ff',
     Icon: Scale,
@@ -68,7 +70,7 @@ export function Education() {
           <div className="lg:col-span-5 space-y-5">
             <h3
               className="text-xs tracking-[0.25em] uppercase font-semibold mb-8"
-              style={{ color: 'rgba(216,228,252,0.5)', fontFamily: 'Inter, sans-serif' }}
+              style={{ color: 'rgba(216,228,252,0.70)', fontFamily: 'Inter, sans-serif' }}
             >
               Latar Akademik untuk K3L
             </h3>
@@ -102,7 +104,7 @@ export function Education() {
                     <div className="text-xs font-mono font-semibold mb-1" style={{ color: d.color }}>{d.year}</div>
                     <h4 className="font-heading font-bold text-lg leading-snug" style={{ color: '#eef2ff' }}>{d.title}</h4>
                     <div className="text-xs mb-2" style={{ color: d.color + 'aa', fontFamily: 'Inter, sans-serif' }}>{d.subtitle}</div>
-                    <p className="text-sm" style={{ color: 'rgba(216,228,252,0.66)', fontFamily: 'Inter, sans-serif' }}>{d.institution}</p>
+                    <p className="text-sm" style={{ color: 'rgba(216,228,252,0.78)', fontFamily: 'Inter, sans-serif' }}>{d.institution}</p>
                   </div>
                 </div>
               </motion.div>
@@ -123,7 +125,7 @@ export function Education() {
               <div className="font-heading font-bold text-5xl mb-2" style={{ color: '#c8a84a', lineHeight: 1.1, paddingTop: '0.04em' }}>30+</div>
               <div
                 className="text-sm tracking-widest uppercase font-semibold"
-                style={{ color: 'rgba(216,228,252,0.6)', fontFamily: 'Inter, sans-serif' }}
+                style={{ color: 'rgba(216,228,252,0.75)', fontFamily: 'Inter, sans-serif' }}
               >
                 Sertifikasi K3 & K3L Profesional
               </div>
@@ -134,7 +136,7 @@ export function Education() {
           <div className="lg:col-span-7">
             <h3
               className="text-xs tracking-[0.25em] uppercase font-semibold mb-8"
-              style={{ color: 'rgba(216,228,252,0.5)', fontFamily: 'Inter, sans-serif' }}
+              style={{ color: 'rgba(216,228,252,0.70)', fontFamily: 'Inter, sans-serif' }}
             >
               Sertifikasi Kunci K3L
             </h3>
@@ -171,10 +173,14 @@ export function Education() {
                     >
                       {cert.name}
                     </h4>
-                    <div className="flex items-center gap-1.5 text-xs" style={{ color: 'rgba(216,228,252,0.52)', fontFamily: 'Inter, sans-serif' }}>
+                    <div className="flex items-center gap-1.5 text-xs" style={{ color: 'rgba(216,228,252,0.70)', fontFamily: 'Inter, sans-serif' }}>
                       <span>{cert.org}</span>
-                      <span aria-hidden="true">·</span>
-                      <span>{cert.date}</span>
+                      {cert.date ? (
+                        <>
+                          <span aria-hidden="true">·</span>
+                          <span>{cert.date}</span>
+                        </>
+                      ) : null}
                     </div>
                   </div>
                 </motion.div>
@@ -182,7 +188,7 @@ export function Education() {
             </div>
             <div
               className="mt-5 text-center text-xs tracking-widest uppercase font-semibold"
-              style={{ color: 'rgba(216,228,252,0.36)', fontFamily: 'Inter, sans-serif' }}
+              style={{ color: 'rgba(216,228,252,0.60)', fontFamily: 'Inter, sans-serif' }}
             >
               + 20 sertifikasi K3L spesialis tambahan
             </div>

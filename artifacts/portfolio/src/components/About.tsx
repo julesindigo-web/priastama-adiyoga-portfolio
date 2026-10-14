@@ -7,10 +7,10 @@ import { HardHat, Scale, ShieldCheck, ClipboardCheck, Siren } from 'lucide-react
 // Navy bg: #020a18
 
 const stats = [
-  { value: '9+',    label: 'Tahun di HSE & K3L',     color: '#c8a84a' },
+  { value: '8+',    label: 'Tahun di HSE & K3L',     color: '#c8a84a' },
   { value: 'SMKP',  label: 'Auditor Tersertifikasi', color: '#7ab8ff' },
   { value: '30+',   label: 'Sertifikasi K3',         color: '#c8a84a' },
-  { value: 'Zero',  label: 'Lost-Time Incidents',    color: '#7ab8ff' },
+  { value: 'Zero',  label: 'LTI · Aragon 23–24',     color: '#7ab8ff' },
 ];
 
 const identities = [
@@ -18,13 +18,13 @@ const identities = [
     Icon: HardHat,
     title: 'Mining HSE Expert',
     color: '#c8a84a',
-    desc: '9+ tahun operasi coal mining, coal hauling, dan andesite mining bersama Bayan Resources Group di Kalimantan Timur — safety leadership di high-risk environment.',
+    desc: '8+ tahun operasi coal mining, coal hauling, dan andesite mining di Kalimantan Timur — termasuk 6 tahun bersama Bayan Resources Group (Bara Tabang) — safety leadership di high-risk environment.',
   },
   {
     Icon: Scale,
     title: 'SMKP & Kepatuhan K3L',
     color: '#7ab8ff',
-    desc: 'Sarjana Hukum (S.H.) + Advokat PERADI — presisi hukum untuk arsitektur kepatuhan SMKP, regulasi ESDM, dan audit K3L.',
+    desc: 'Sarjana Hukum (S.H.), lulus Ujian Profesi Advokat PERADI 2017 — presisi hukum untuk arsitektur kepatuhan SMKP, regulasi ESDM, dan audit K3L.',
   },
   {
     Icon: ShieldCheck,
@@ -92,6 +92,8 @@ export function About() {
             >
               <img
                 src="/photos/profile.jpg"
+                srcSet="/photos/profile.jpg 600w"
+                sizes="(max-width: 1024px) 100vw, 400px"
                 alt="Priastama Adiyoga — Mining HSE Manager di site Kalimantan Timur"
                 loading="lazy"
                 decoding="async"
@@ -132,13 +134,16 @@ export function About() {
             >
               <img
                 src="/photos/kalimantan.jpg"
+                srcSet="/photos/kalimantan.jpg 600w"
+                sizes="(max-width: 1024px) 100vw, 400px"
                 alt="Operasi tambang Kalimantan Timur — area kerja HSE dan K3L"
                 loading="lazy"
                 decoding="async"
                 width={600}
                 height={450}
                 className="w-full h-full object-cover"
-                style={{ filter: 'grayscale(20%) brightness(0.72) saturate(1.1)' }}
+                // Shared "site/field" grade (matches the Experience strip).
+                style={{ filter: 'grayscale(25%) brightness(0.68) saturate(1.1)' }}
               />
               <div className="absolute inset-0"
                 style={{ background: 'linear-gradient(to top, rgba(2,10,24,0.78) 0%, transparent 60%)' }} />
@@ -192,7 +197,7 @@ export function About() {
                       <id.Icon size={18} style={{ color: id.color }} aria-hidden="true" />
                     </div>
                     <h3 className="font-heading font-bold text-sm mb-2" style={{ color: id.color }}>{id.title}</h3>
-                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(216,228,252,0.72)', fontFamily: 'Inter, sans-serif' }}>
+                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(216,228,252,0.82)', fontFamily: 'Inter, sans-serif' }}>
                       {id.desc}
                     </p>
                   </div>
@@ -207,13 +212,13 @@ export function About() {
                   Icon: HardHat,
                   color: '#c8a84a',
                   label: 'Keahlian Lapangan K3L',
-                  text: '9+ tahun membangun dan mempertahankan sistem HSE di operasi coal mining, coal hauling, dan andesite mining Kalimantan — di mana satu kelalaian bisa fatal dan Zero LTI adalah satu-satunya target.',
+                  text: '8+ tahun membangun dan mempertahankan sistem HSE di operasi coal mining, coal hauling, dan andesite mining Kalimantan — di mana satu kelalaian bisa fatal dan Zero LTI adalah satu-satunya target.',
                 },
                 {
                   Icon: ClipboardCheck,
                   color: '#7ab8ff',
                   label: 'SMKP & Kepatuhan Regulasi',
-                  text: 'Sarjana Hukum (S.H.) dan Advokat PERADI — merancang arsitektur kepatuhan SMKP, audit internal, dan dokumentasi K3L yang lolos audit eksternal tanpa temuan mayor.',
+                  text: 'Sarjana Hukum (S.H.) dan lulusan Ujian Profesi Advokat PERADI 2017 — merancang arsitektur kepatuhan SMKP, audit internal, dan dokumentasi K3L yang lolos audit eksternal tanpa temuan mayor.',
                 },
                 {
                   Icon: Siren,
@@ -249,7 +254,7 @@ export function About() {
                     </div>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: 'rgba(216,228,252,0.74)', fontFamily: 'Inter, sans-serif' }}
+                      style={{ color: 'rgba(216,228,252,0.82)', fontFamily: 'Inter, sans-serif' }}
                     >
                       {item.text}
                     </p>
@@ -258,18 +263,19 @@ export function About() {
               ))}
               <div
                 className="flex items-center gap-4 pt-1 text-xs tracking-[0.2em] uppercase font-semibold"
-                style={{ color: 'rgba(210,225,255,0.25)' }}
+                style={{ color: 'rgba(210,225,255,0.55)' }}
               >
                 <span style={{ width: 40, height: 1, background: 'rgba(200,168,74,0.18)', display: 'inline-block' }} />
-                Samarinda, Kalimantan Timur · Born 15 March 1992
+                Samarinda, Kalimantan Timur
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {/* Stats — list semantics mirror the Hero highlights */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" role="list" aria-label="Profil singkat">
               {stats.map((s, i) => (
                 <motion.div
                   key={i}
+                  role="listitem"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -288,7 +294,7 @@ export function About() {
                     <div className="font-heading font-bold text-2xl mb-1" style={{ color: s.color, lineHeight: 1.15 }}>
                       {s.value}
                     </div>
-                    <div className="text-xs tracking-wider uppercase" style={{ color: 'rgba(210,225,255,0.32)', fontFamily: 'Inter, sans-serif' }}>
+                    <div className="text-xs tracking-wider uppercase" style={{ color: 'rgba(210,225,255,0.70)', fontFamily: 'Inter, sans-serif' }}>
                       {s.label}
                     </div>
                   </div>
@@ -296,6 +302,27 @@ export function About() {
               ))}
             </div>
           </motion.div>
+        </div>
+
+        {/* English summary — owner-approved final. Both sentences are direct
+            translations of existing ID copy (Skills header + Contact intro) and
+            intentionally carry no tenure, certification, phone, or DOB figures. */}
+        <div
+          lang="en"
+          aria-label="English summary"
+          className="mt-12 mx-auto max-w-3xl rounded-2xl p-6 text-left"
+          style={{
+            background: 'rgba(238,242,255,0.022)',
+            border: '1px dashed rgba(200,168,74,0.35)',
+          }}
+        >
+          <p className="text-sm leading-relaxed mb-2" style={{ color: 'rgba(216,228,252,0.82)', fontFamily: 'Inter, sans-serif' }}>
+            Focused on safety, K3L, SMKP, and a Zero-Accident culture in mining operations.
+          </p>
+          <p className="text-sm leading-relaxed" style={{ color: 'rgba(216,228,252,0.82)', fontFamily: 'Inter, sans-serif' }}>
+            For organisations that put safety first — let&apos;s build K3L systems that pass audits
+            and a Zero-Accident culture that lasts.
+          </p>
         </div>
       </div>
     </section>

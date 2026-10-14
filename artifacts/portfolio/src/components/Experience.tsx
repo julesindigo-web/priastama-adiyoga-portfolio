@@ -2,10 +2,23 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
+    company: 'PT Sifang Mining Indonesia',
+    role: 'Safety Supervisor',
+    period: 'Jul 2026 – Okt 2026',
+    tag: null,
+    tagColor: '#c8a84a',
+    color: '#c8a84a',
+    description: [
+      'Membangun Safety Management System dari nol untuk perusahaan yang baru memasuki sektor pertambangan',
+      'Menyusun prosedur K3, HIRADC, dan ERP sesuai regulasi',
+      'Pengawasan K3 lapangan harian, investigasi insiden, dan induksi K3',
+    ],
+  },
+  {
     company: 'PT. Sungai Berlian Mahakam',
     role: 'HSE Coordinator / SMKP Auditor & Internal Auditor',
     period: 'Jan 2025 – Nov 2025',
-    tag: 'Terkini',
+    tag: null,
     tagColor: '#7ab8ff',
     color: '#7ab8ff',
     description: [
@@ -30,7 +43,7 @@ const experiences = [
   {
     company: 'PT. Aragon Tambang Pratama',
     role: 'Senior HSE Staff',
-    period: 'Okt 2023 – Jul 2024',
+    period: 'Sep 2023 – Jul 2024',
     tag: 'Zero LTI',
     tagColor: '#7ab8ff',
     color: '#c8a84a',
@@ -43,7 +56,7 @@ const experiences = [
   {
     company: 'PT. Bara Tabang – Bayan Resources Group',
     role: 'Safety Foreman, Systems & Compliance',
-    period: 'Jul 2017 – Jul 2023',
+    period: 'Jul 2017 – Jun 2023',
     tag: '6 Tahun · Penghargaan',
     tagColor: '#c8a84a',
     color: '#c8a84a',
@@ -56,10 +69,13 @@ const experiences = [
   },
 ];
 
+// Captions name the responsible role function using only vocabulary already
+// present in the `experiences` roles/tags/descriptions above — they describe
+// the HSE function, not the provenance of the illustrative photo.
 const fieldPhotos = [
-  { src: '/photos/mining-inspection.jpg', caption: 'Inspeksi K3L Lapangan',   sub: 'Audit HSE & SMKP di site tambang' },
-  { src: '/photos/mining-panorama.jpg',   caption: 'Pengawasan Site',      sub: 'Surveillance operasi & bahaya' },
-  { src: '/photos/mining-work.jpg',       caption: 'Operasi Aktif',   sub: 'Zona heavy equipment, hauling & mining' },
+  { src: '/photos/mining-inspection.jpg', caption: 'Audit SMKP & Sistem K3L',      sub: 'HSE Coordinator · SMKP Auditor & Internal Auditor' },
+  { src: '/photos/mining-panorama.jpg',   caption: 'Coal Mining & Coal Hauling',   sub: 'Senior Safety Officer · Tabang–Senyiur' },
+  { src: '/photos/safety-patrol-pit.jpg', caption: 'Sistem K3L & Zero Accident',   sub: 'Senior HSE Staff · Zero LTI' },
 ];
 
 export function Experience() {
@@ -108,13 +124,19 @@ export function Experience() {
             >
               <img
                 src={photo.src}
+                srcSet={`${photo.src} 640w`}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                 alt={`${photo.caption} — dokumentasi HSE di site tambang`}
                 loading="lazy"
                 decoding="async"
                 width={640}
                 height={400}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ filter: 'grayscale(30%) brightness(0.65) saturate(1.1)' }}
+                // Shared "site/field" grade (matches the About Kalimantan photo):
+                // desaturated + dimmed so gold/blue overlays and captions hold
+                // contrast. Portrait (About profile) stays natural; Achievement
+                // cards keep their darker text-legibility overlay by design.
+                style={{ filter: 'grayscale(25%) brightness(0.68) saturate(1.1)' }}
               />
               <div
                 className="absolute inset-0 transition-opacity duration-300"
@@ -124,7 +146,7 @@ export function Experience() {
                 style={{ background: 'linear-gradient(90deg,transparent,rgba(200,168,74,0.5),transparent)' }} />
               <div className="absolute bottom-3 left-4 right-4">
                 <div className="font-heading font-semibold text-sm" style={{ color: '#eef2ff' }}>{photo.caption}</div>
-                <div className="text-xs mt-0.5" style={{ color: 'rgba(210,225,255,0.42)', fontFamily: 'Inter, sans-serif' }}>{photo.sub}</div>
+                <div className="text-xs mt-0.5" style={{ color: 'rgba(210,225,255,0.70)', fontFamily: 'Inter, sans-serif' }}>{photo.sub}</div>
               </div>
             </div>
           ))}
@@ -212,7 +234,7 @@ export function Experience() {
                         <li
                           key={j}
                           className="flex items-start gap-3 text-sm leading-relaxed"
-                          style={{ color: 'rgba(216,228,252,0.74)', fontFamily: 'Inter, sans-serif' }}
+                          style={{ color: 'rgba(216,228,252,0.82)', fontFamily: 'Inter, sans-serif' }}
                         >
                           <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full" style={{ background: exp.color }} />
                           {item}

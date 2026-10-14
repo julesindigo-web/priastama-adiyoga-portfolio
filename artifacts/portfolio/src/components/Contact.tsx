@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, MapPin, Phone, MessageCircle, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Mail, Linkedin, MapPin, Phone, MessageCircle, ExternalLink, ArrowUpRight, Download } from 'lucide-react';
 
 const opportunities = [
   { label: 'HSE Manager & Leadership K3L',  color: '#c8a84a' },
@@ -26,15 +26,15 @@ const contacts = [
   },
   {
     Icon: Phone,
-    label: '+62 821-5482-5454',
+    label: 'Kontak utama: +62 821-5482-5454',
     href: 'tel:+6282154825454',
     aria: 'Telepon HSE +62 821-5482-5454',
     color: '#c8a84a',
   },
   {
     Icon: MessageCircle,
-    label: '+62 822-1359-5760 (WhatsApp)',
-    href: 'https://wa.me/6282213595760',
+    label: 'Cadangan / WhatsApp: +62 822-1359-5760',
+    href: 'https://wa.me/6282213595760?text=Halo%2C%20saya%20melihat%20portfolio%20HSE%20%26%20K3L%20Anda%20dan%20ingin%20mendiskusikan%20kebutuhan%20site.',
     aria: 'Hubungi WhatsApp HSE +62 822-1359-5760',
     color: '#2a7fff',
     external: true,
@@ -87,11 +87,11 @@ export function Contact() {
           <div className="mt-4 mx-auto" style={{ width: 80, height: 2, background: 'linear-gradient(90deg,#c8a84a,#2a7fff)' }} />
           <p
             className="mt-6 text-base max-w-lg mx-auto font-light"
-            style={{ color: 'rgba(216,228,252,0.66)', fontFamily: 'Inter, sans-serif', lineHeight: 1.68 }}
+            style={{ color: 'rgba(216,228,252,0.78)', fontFamily: 'Inter, sans-serif', lineHeight: 1.68 }}
           >
             Bagi organisasi yang menempatkan keselamatan sebagai prioritas — mari
             membangun sistem K3L yang lolos audit dan budaya Zero Accident yang
-            bertahan, didukung 9+ tahun pengalaman lapangan.
+            bertahan, didukung 8+ tahun pengalaman lapangan.
           </p>
         </motion.div>
 
@@ -105,7 +105,7 @@ export function Contact() {
           >
             <h3
               className="text-xs tracking-[0.25em] uppercase font-semibold mb-8"
-              style={{ color: 'rgba(216,228,252,0.46)', fontFamily: 'Inter, sans-serif' }}
+              style={{ color: 'rgba(216,228,252,0.68)', fontFamily: 'Inter, sans-serif' }}
             >
               Kontak Langsung HSE
             </h3>
@@ -177,7 +177,7 @@ export function Contact() {
 
             <h3
               className="text-xs tracking-[0.25em] uppercase font-semibold mb-8"
-              style={{ color: 'rgba(216,228,252,0.46)', fontFamily: 'Inter, sans-serif' }}
+              style={{ color: 'rgba(216,228,252,0.68)', fontFamily: 'Inter, sans-serif' }}
             >
               Terbuka untuk Penugasan K3L
             </h3>
@@ -221,11 +221,28 @@ export function Contact() {
               Diskusikan Kebutuhan K3L
             </a>
 
+            {/* PDF 1 halaman */}
+            <a
+              href="/priastama-adiyoga-hse-profil.pdf"
+              download="Priastama-Adiyoga-HSE-Profil.pdf"
+              aria-label="Unduh profil HSE satu halaman (PDF)"
+              className="mt-3 flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                border: '1px solid rgba(200,168,74,0.48)',
+                background: 'rgba(4,14,30,0.45)',
+                color: '#e8c870',
+                fontFamily: 'Inter, sans-serif',
+              }}
+            >
+              <Download size={15} />
+              Unduh Profil 1 Halaman (PDF)
+            </a>
+
             {/* Footer */}
             <div className="mt-8 pt-6 text-center" style={{ borderTop: '1px solid rgba(200,168,74,0.08)' }}>
               <p
                 className="text-xs tracking-[0.15em] uppercase font-semibold"
-                style={{ color: 'rgba(216,228,252,0.34)', fontFamily: 'Inter, sans-serif' }}
+                style={{ color: 'rgba(216,228,252,0.60)', fontFamily: 'Inter, sans-serif' }}
               >
                 © {new Date().getFullYear()} Priastama Adiyoga — HSE · K3L · Mining Safety
               </p>

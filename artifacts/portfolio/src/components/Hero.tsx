@@ -81,6 +81,11 @@ export function Hero() {
     // possible if the React ref API itself fails.
     /* v8 ignore next */
     if (!canvas) return;
+    // Respect users who prefer reduced motion: render one static frame
+    // (stars + faint streams) and skip the rAF loop entirely.
+    const prefersReduced =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const ctx = canvas.getContext('2d')!;
 
     const resize = () => {
@@ -101,11 +106,13 @@ export function Hero() {
     // Narrow screens get fewer particles/streams, and stream head-dots are
     // skipped entirely — a glowing dot drifting near the CTAs reads as a
     // stray spinner/loading artifact on mobile.
+    // Masterpiece pass: leaner budgets (140/90 sparkles, 7+4/5+2 streams)
+    // keep the Royal Night density while easing mid-range GPUs.
     const isNarrow = window.innerWidth < 640;
-    const sparkles: Sparkle[] = Array.from({ length: isNarrow ? 120 : 200 }, () => spawnSparkle(W(), H()));
+    const sparkles: Sparkle[] = Array.from({ length: isNarrow ? 90 : 140 }, () => spawnSparkle(W(), H()));
     const streams: Stream[] = [
-      ...Array.from({ length: isNarrow ? 6 : 10 }, () => makeStream(W(), H(), true)),
-      ...Array.from({ length: isNarrow ? 3 : 5  }, () => makeStream(W(), H(), false)),
+      ...Array.from({ length: isNarrow ? 5 : 7 }, () => makeStream(W(), H(), true)),
+      ...Array.from({ length: isNarrow ? 2 : 4  }, () => makeStream(W(), H(), false)),
     ];
     const stars = Array.from({ length: 140 }, () => ({
       x: Math.random(), y: Math.random(),
@@ -164,7 +171,7 @@ export function Hero() {
           ctx.strokeStyle = `${stream.color}${stream.alpha * 0.28})`;
           ctx.lineWidth = stream.width * 5;
           ctx.lineCap = 'round';
-          ctx.shadowBlur = 12;
+          ctx.shadowBlur = 8;
           ctx.shadowColor = `${stream.color}0.4)`;
           ctx.stroke();
           ctx.shadowBlur = 0;
@@ -180,7 +187,8 @@ export function Hero() {
           // like a loading spinner when passing near buttons.
           // Checked against live width (not mount-time isNarrow) so rotating
           // a phone to portrait immediately drops the dots too.
-          if (w >= 640) {
+          // Reduced-motion users get no drifting dots at all.
+          if (w >= 640 && !prefersReduced) {
             const hx = pts[end].x, hy = pts[end].y;
             const hg = ctx.createRadialGradient(hx, hy, 0, hx, hy, 3.5);
             hg.addColorStop(0, `${stream.color}0.5)`);
@@ -237,6 +245,7 @@ export function Hero() {
       ctx.fillRect(0, 0, w, h);
 
       t += 0.012;
+      if (prefersReduced) return;
       animRef.current = requestAnimationFrame(draw);
     };
 
@@ -252,8 +261,8 @@ export function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   const stats = [
-    { value: '9+',  label: 'Tahun di HSE & K3L',   blue: false },
-    { value: '0',   label: 'Lost-Time Incidents', blue: true  },
+    { value: '8+',  label: 'Tahun di HSE & K3L',   blue: false },
+    { value: '0',   label: 'LTI · Aragon 23–24', blue: true  },
     { value: '30+', label: 'Sertifikasi K3',      blue: false },
   ];
 
@@ -271,12 +280,17 @@ export function Hero() {
       {/* Layer 0 : optimized JPG background (114KB) - PNG original preserved in git history */}
       <img
         src="/photos/royal-night-bg.jpg"
+        srcSet="/photos/royal-night-bg.jpg 1600w"
+        sizes="100vw"
         alt=""
         aria-hidden="true"
         fetchPriority="high"
         decoding="async"
+        draggable={false}
+        width={1600}
+        height={900}
         className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
-        style={{ filter: 'brightness(0.52) saturate(1.1)', zIndex: 0 }}
+        style={{ filter: 'brightness(0.52) saturate(1.1)', zIndex: 0, aspectRatio: '16 / 9' }}
       />
 
       {/* ── Layer 1 · animated particle canvas ────────────────────────────── */}
@@ -328,7 +342,7 @@ export function Hero() {
             border: '1px solid rgba(200,168,74,0.32)',
             background: 'rgba(200,168,74,0.07)',
             color: '#e8c870',
-            fontSize: 'clamp(9px, 2.4vw, 10px)',
+            fontSize: 'clamp(11px, 2.4vw, 12px)',
             fontFamily: 'Inter, sans-serif',
             letterSpacing: '0.18em',
             fontWeight: 600,
@@ -363,10 +377,11 @@ export function Hero() {
             style={{
               display: 'block',
               fontSize: 'clamp(2.8rem, 9vw, 7.5rem)',
-              fontWeight: 600,
+              fontWeight: 700,
               lineHeight: 1.14,
               letterSpacing: '0.01em',
               color: '#eef2ff',
+              textWrap: 'balance',
               textShadow: '0 2px 40px rgba(2,10,24,0.9)',
             }}
           >
@@ -378,7 +393,7 @@ export function Hero() {
               display: 'block',
               fontSize: 'clamp(2.8rem, 9vw, 7.5rem)',
               fontStyle: 'italic',
-              fontWeight: 600,
+              fontWeight: 700,
               lineHeight: 1.22,
               paddingBottom: '0.16em',
               marginBottom: 8,
@@ -387,6 +402,7 @@ export function Hero() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
+              textWrap: 'balance',
               filter: 'drop-shadow(0 0 20px rgba(200,168,74,0.45))',
             }}
           >
@@ -437,7 +453,7 @@ export function Hero() {
             >
               <span
                 style={{
-                  fontSize: 'clamp(0.65rem, 1.85vw, 0.95rem)',
+                  fontSize: 'clamp(0.72rem, 1.85vw, 0.95rem)',
                   fontWeight: weight,
                   color,
                   letterSpacing: '0.10em',
@@ -483,10 +499,11 @@ export function Hero() {
             textShadow: '0 1px 18px rgba(2,10,24,0.85)',
           }}
         >
-          Saya membangun operasi tambang yang lebih aman melalui sistem K3L,
-          SMKP, HIRADC, dan budaya Zero Accident — 9+ tahun tanpa Lost-Time
-          Incident di site coal mining, coal hauling, dan andesite mining
-          Kalimantan Timur.
+          Safety Specialist ber-latar Advokat PERADI yang membangun dan memelihara
+          sistem K3L di operasi high-risk Kalimantan — 8+ tahun di coal mining,
+          coal hauling, dan andesite mining Kalimantan Timur, dengan Zero
+          Lost-Time Injury terdokumentasi pada penugasan Aragon Tambang Pratama
+          (2023–2024).
         </motion.p>
 
         {/* ── 6. CTAs ───────────────────────────────────────────────────────── */}
@@ -615,10 +632,10 @@ export function Hero() {
               <div
                 style={{
                   marginTop: 4,
-                  fontSize: 'clamp(8.5px, 2vw, 10px)',
+                  fontSize: 'clamp(10px, 2vw, 10px)',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'rgba(190,208,232,0.75)',
+                  color: 'rgba(190,208,232,0.85)',
                   fontFamily: 'Inter, sans-serif',
                   lineHeight: 1.35,
                   wordBreak: 'break-word',

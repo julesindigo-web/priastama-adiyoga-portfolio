@@ -1,5 +1,5 @@
 const CACHE_NAME = 'priastama-hse-v2';
-const CORE_URLS = ['/', '/index.html', '/manifest.json', '/favicon.svg', '/icon.svg'];
+const CORE_URLS = ['/', '/index.html', '/manifest.json', '/favicon.svg', '/icon.svg', '/priastama-adiyoga-hse-profil.pdf'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

@@ -277,6 +277,11 @@
   #about, #experience, #skills, #education, #achievements, #contact {
     content-visibility: auto;
     contain-intrinsic-size: auto 800px;
+    scroll-margin-top: 88px;
+  }
+
+  #hero {
+    scroll-margin-top: 0;
   }
 
   img[data-below-fold='true'] {
@@ -321,11 +326,16 @@
 }
 
 /* Reduced-motion: collapse Framer Motion fade-in delay so content is
-   immediately visible for users who prefer reduced motion.                  */
+   immediately visible for users who prefer reduced motion.
+   The Hero canvas is hidden entirely — a static gradient + photo
+   carries the Royal Night mood without drifting particles. */
 @media (prefers-reduced-motion: reduce) {
   .hero-section * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+  .hero-section canvas {
+    display: none !important;
   }
 }
 
